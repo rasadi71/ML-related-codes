@@ -9,3 +9,7 @@ melb_data.info()
 print(melb_data.describe())
 print(melb_data.hist(bins=50,figsize=(20,15)))
 plt.show()
+feature=["Rooms","Bedroom2","Bathroom","Lattitude","Distance"]
+x=melb_data[feature]
+print(x)
+melb_data["Regionname"].value_counts()
