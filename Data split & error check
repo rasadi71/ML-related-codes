@@ -1,0 +1,20 @@
+import pandas as pd 
+import numpy as np
+import sklearn 
+d_file=r"C:\Users\romal\OneDrive\Desktop\melb_data.csv"
+melb_data=pd.read_csv(d_file)
+print(melb_data)
+feat=['Rooms','Bathroom','Landsize','Lattitude','Longtitude']
+x=melb_data[feat]
+y=melb_data['Price']
+from sklearn.model_selection import train_test_split
+tr_x,v_x,tr_y,v_y=train_test_split(x,y,random_state=0)
+from sklearn.tree import DecisionTreeRegressor
+ml_model=DecisionTreeRegressor(random_state=1)
+ml_model.fit(tr_x,tr_y)
+y_pred=ml_model.predict(v_x)
+print(y_pred)
+from sklearn.metrics import mean_absolute_error
+mean_absolute_error(v_y,y_pred)
+
+print("Mean Absolute Error:", mean_absolute_error(v_y, y_pred))
